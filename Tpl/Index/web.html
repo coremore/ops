@@ -1,0 +1,169 @@
+<html>
+<head>
+    <title>Filter</title>
+    <include file="./Public/static.html" />
+</head>
+<body>
+<include file="./Public/nav.html" />
+<div class="alert alert-success">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <h4>
+        发布站
+    </h4>
+</div>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span6">
+            <table class="table table-hover table-condensed table-bordered">
+                <thead>
+                <tr>
+                    <th>跳转站</th>
+                    <th>发布站</th>
+                    <th>版本</th>
+                    <th>所属</th>
+                    <!--<th>管理</th>-->
+                </tr>
+                </thead>
+                <tbody>
+                <volist name="a" id="vo">
+                <tr>
+                    <td>{$vo.name}</td>
+                    <td>{$vo.web}</td>
+                    <td>{$vo.version}</td>
+                    <td>{$vo.owns}</td>
+                    <!--<td><a href="__URL__/web/id/{$vo.id}"> <button type="button" class="btn btn-primary">编辑</button></a>-->
+                        <!--<a href="__URL__/filtsdelete/id/{$vo.id}"><button type="button" class="btn btn-danger"> 删除</button></a></td>-->
+                    <!--</td>-->
+                </tr>
+                </volist>
+                </tbody>
+            </table>
+        </div>
+        <div class="span6">
+            <if condition="$id">
+                <form class="form-horizontal" method="post" action="__URL__/webupdate">
+                <fieldset>
+                    <div id="legend" class="">
+                        <legend class="">更新发布站</legend>
+                    </div>
+                    <div class="control-group">
+
+                        <!-- Text input-->
+                        <label class="control-label" for="web">发布站</label>
+                        <div class="controls">
+                            <INPUT type="hidden" name="id" value="{$filtupdate[0].id}">
+                            <input type="text" value="{$filtupdate[0].web}" class="input-xlarge" name="web">
+                            <p class="help-block">请输入发布站网址</p>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+
+                        <!-- Text input-->
+                        <label class="control-label" for="version">版本</label>
+                        <div class="controls">
+                            <input type="text" value="{$filtupdate[0].version}" class="input-xlarge" name="version">
+                            <p class="help-block">请输入发布站版本</p>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+
+                        <!-- Text input-->
+                        <label class="control-label" for="owns">所属者</label>
+                        <div class="controls">
+                            <input type="text" value="{$filtupdate[0].owns}" class="input-xlarge" name="owns">
+                            <p class="help-block">请输入发布站所属者</p>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+
+                        <!-- Select Basic -->
+                        <label class="control-label">跳转站</label>
+                        <div class="controls">
+                            <select class="input-xlarge" name="jumpid">
+                                <volist name="jump" id="jo">
+                                <option value="{$jo.id}">{$jo.name}</option>
+                                </volist>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="control-group">
+
+                        <!-- Button -->
+                        <div class="controls">
+                            <button class="btn btn-success">提交</button>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </form>
+                <else/>
+                <form class="form-horizontal" method="post" action="__URL__/webadd">
+                    <fieldset>
+                        <div id="legend" class="">
+                            <legend class="">添加发布站</legend>
+                        </div>
+                        <div class="control-group">
+
+                            <!-- Text input-->
+                            <label class="control-label" for="web">发布站</label>
+                            <div class="controls">
+                                <input type="text" placeholder="请输入发布站网址" class="input-xlarge" name="web">
+                                <p class="help-block">请输入发布站网址</p>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+
+                            <!-- Text input-->
+                            <label class="control-label" for="version">版本</label>
+                            <div class="controls">
+                                <input type="text" placeholder="placeholder" class="input-xlarge" name="version">
+                                <p class="help-block">请输入发布站版本</p>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+
+                            <!-- Text input-->
+                            <label class="control-label" for="owns">所属者</label>
+                            <div class="controls">
+                                <input type="text" placeholder="placeholder" class="input-xlarge" name="owns">
+                                <p class="help-block">请输入发布站所属者</p>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+
+                            <!-- Select Basic -->
+                            <label class="control-label">跳转站</label>
+                            <div class="controls">
+                                <select class="input-xlarge" name="jumpid">
+                                    <volist name="jump" id="jo">
+                                        <option value="{$jo.id}">{$jo.name}</option>
+                                    </volist>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="control-group">
+
+                            <!-- Button -->
+                            <div class="controls">
+                                <button class="btn btn-success">提交</button>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </form>
+            </if>
+        </div>
+    </div>
+</div>
+</body>
+</html>

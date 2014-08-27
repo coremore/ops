@@ -1,0 +1,120 @@
+<html>
+<head>
+    <title>Filter</title>
+    <include file="./Public/static.html" />
+
+</head>
+<body>
+<include file="./Public/nav.html" />
+<div class="alert alert-success">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <h4>
+        跳转站
+    </h4>
+</div>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span6">
+            <table class="table table-hover table-condensed table-bordered">
+                <thead>
+                <tr>
+                    <th>id</th>
+                    <th>名称</th>
+                    <th>网址</th>
+                    <th>管理</th>
+                </tr>
+                </thead>
+                <tbody>
+                <volist name="jump" id="vo">
+
+                    <tr>
+                        <td>{$vo.id}</td>
+                        <td>{$vo.name}</td>
+                        <td>{$vo.site}</td>
+                        <td><a href="__URL__/jump/id/{$vo.id}"> <button type="button" class="btn btn-primary">编辑</button></a>
+                            <a href="__URL__/jumpdelete/id/{$vo.idsss}"><button type="button" class="btn btn-danger"> 删除</button></a></td>
+                    </tr>
+                </volist>
+                </tbody>
+            </table>
+        </div>
+        <div class="span6">
+            <if condition="$id">
+                <form class="form-horizontal" method="post" action="__URL__/jumpupdate">
+                    <fieldset>
+                        <div id="legend" class="">
+                            <legend class=""><a href="__URL__/jump">返回添加</a> </legend>
+                        </div>
+                        <div class="control-group">
+                            <!-- Text input-->
+                            <label class="control-label" for="name">跳转站</label>
+                            <div class="controls">
+                                <input type="text" value="{$jumpupdate[0].name}" class="input-xlarge" name="name">
+                                <p class="help-block">请输入发跳转站名称</p>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+
+                            <!-- Text input-->
+                            <label class="control-label" for="site">网址</label>
+                            <div class="controls">
+                                <input type="text" value="{$jumpupdate[0].site}" class="input-xlarge" name="site">
+                                <p class="help-block">请输入跳转站网址</p>
+                            </div>
+                            <INPUT type="hidden" name="id" value="{$jumpupdate[0].id}">
+                        </div>
+
+                        <div class="control-group">
+
+                            <!-- Button -->
+                            <div class="controls">
+                                <button class="btn btn-success">提交</button>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </form>
+                <else/>
+                <form class="form-horizontal" method="post" action="__URL__/jumpadd">
+                    <fieldset>
+                        <div id="legend" class="">
+                            <legend class="">添加跳转站</legend>
+                        </div>
+                        <div class="control-group">
+
+                            <!-- Text input-->
+                            <label class="control-label" for="name">跳转站</label>
+                            <div class="controls">
+                                <input type="text" placeholder="请输入发布站名称" class="input-xlarge" name="name">
+                                <p class="help-block">请输入发跳转站名称</p>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+
+                            <!-- Text input-->
+                            <label class="control-label" for="site">网址</label>
+                            <div class="controls">
+                                <input type="text" placeholder="placeholder" class="input-xlarge" name="site">
+                                <p class="help-block">请输入跳转站网址</p>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+
+                            <!-- Button -->
+                            <div class="controls">
+                                <button class="btn btn-success">提交</button>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </form>
+            </if>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

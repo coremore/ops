@@ -1,0 +1,91 @@
+<html>
+<head>
+    <title>Filter</title>
+    <include file="./Public/static.html" />
+</head>
+<body>
+<include file="./Public/nav.html" />
+<div class="alert alert-success">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <h4>
+        跳转站
+    </h4>
+</div>
+<button type="button" class="btn btn-danger">今日未交</button>
+<button type="button" class="btn btn-info">今日已交</button>
+<button type="button" class="btn btn-default">跳转统计</button>
+<button type="button" class="btn btn-default">站点统计</button>
+<button type="button" class="btn btn-default">业务总额</button>
+<hr>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span7">
+            <table class="table table-hover table-condensed table-bordered">
+                <thead>
+                <tr>
+                    <th>跳转站</th>
+                    <th>发布站</th>
+                    <th>版本信息</th>
+                    <th>客户归属</th>
+                    <th>过滤金额</th>
+                    <th>状态</th>
+                </tr>
+                </thead>
+                <tbody>
+                <volist name="filts" id="vo">
+
+                    <tr>
+                        <td>{$vo.jumpid}</td>
+                        <td>{$vo.web}</td>
+                        <td>{$vo.version}</td>
+                        <td>{$vo.owns}</td>
+                        <td>{$vo.web}</td>
+                        <td>{$vo.web}</td>
+
+                    </tr>
+                </volist>
+                </tbody>
+            </table>
+        </div>
+        <div class="span5">
+                <form class="form-horizontal" method="post" action="__URL__/jumpadd">
+                    <fieldset>
+                        <div id="legend" class="">
+                            <legend class="">提交支付</legend>
+                        </div>
+                        <div class="control-group">
+
+                            <!-- Text input-->
+                            <label class="control-label" for="name">发布站</label>
+                            <div class="controls">
+                                <input type="text" placeholder="请输入发布站" class="input-xlarge" name="name">
+                                <p class="help-block">请输入发布站</p>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+
+                            <!-- Text input-->
+                            <label class="control-label" for="site">金额</label>
+                            <div class="controls">
+                                <input type="text" placeholder="请输入上缴金额" class="input-xlarge" name="site">
+                                <p class="help-block">请输入上缴金额</p>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+
+                            <!-- Button -->
+                            <div class="controls">
+                                <button class="btn btn-success">提交</button>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </form>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
